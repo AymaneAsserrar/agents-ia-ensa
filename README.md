@@ -1,6 +1,6 @@
 # De ChatGPT aux agents IA
 
-Code de la session IEEE ENSA Fès du 14 novembre 2026, par Aymane Asserrar.
+Code de la session IEEE ENSA Fès du 14 novembre 2026, par Aymane Asserrar ([@aymane.ai_](https://instagram.com/aymane.ai_) sur Instagram).
 
 On construit un agent IA à partir de zéro, en 5 petits scripts Python, sans framework. L'idée : comprendre ce qui se passe vraiment derrière ChatGPT, Claude ou Gemini quand ils "utilisent des outils".
 
@@ -74,4 +74,4 @@ Le code utilise le format de l'API OpenAI, que la plupart des fournisseurs accep
 - Regarde le protocole MCP (Model Context Protocol), qui standardise la façon de brancher des outils sur un agent.
 - Essaie un framework une fois que tu as compris la boucle : LangGraph, OpenAI Agents SDK, Claude Agent SDK, Google ADK.
 
-Questions ou idées : contacte-moi sur Instagram ou LinkedIn.
+Questions ou idées : écris-moi sur Instagram [@aymane.ai_](https://instagram.com/aymane.ai_), où j’explique l’IA en darija.
