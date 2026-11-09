@@ -2,7 +2,7 @@
 Connexion au LLM.
 
 On utilise le SDK `openai` parce que presque tous les fournisseurs parlent ce "langage" :
-Gemini (gratuit), Groq, Ollama (en local sur ton PC), OpenAI...
+Claude (Anthropic), Gemini (gratuit), Groq, Ollama (en local sur ton PC), OpenAI...
 Tu changes de fournisseur en modifiant juste le fichier .env.
 
 Si aucune clé n'est configurée (ou avec --mock), on passe en MODE DÉMO :
@@ -21,6 +21,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 FOURNISSEURS = {
+    "claude": {
+        "base_url": "https://api.anthropic.com/v1/",
+        "cle": "ANTHROPIC_API_KEY",
+        "modele": "claude-sonnet-5-5",
+    },
     "gemini": {
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
         "cle": "GEMINI_API_KEY",
@@ -50,7 +55,22 @@ def get_client():
     modele = os.getenv("MODEL") or conf["modele"]
     if not modele:
         sys.exit(f"Ajoute MODEL=... dans ton .env pour le fournisseur {fournisseur}.")
-    return OpenAI(api_key=cle, base_url=conf["base_url"]), modele
+    client = OpenAI(api_key=cle, base_url=conf["base_url"])
+    if fournisseur == "claude":
+        client = _AvecMaxTokens(client)
+    return client, modele
+
+
+class _AvecMaxTokens:
+    """L'API Claude veut une limite de longueur de réponse : on en met une par défaut."""
+
+    def __init__(self, client):
+        self._client = client
+        self.chat = type("Chat", (), {"completions": self})()
+
+    def create(self, **kwargs):
+        kwargs.setdefault("max_tokens", 8000)
+        return self._client.chat.completions.create(**kwargs)
 
 
 def message_vers_dict(msg):

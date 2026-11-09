@@ -19,7 +19,7 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Ensuite, récupère une clé API Gemini gratuite sur [Google AI Studio](https://aistudio.google.com/apikey) et colle-la dans `.env`.
+Ensuite, mets une clé API dans `.env`. Pendant la session, la démo tourne avec Claude (clé sur la [console Anthropic](https://console.anthropic.com), crédits payants). Pour refaire la démo gratuitement, prends une clé Gemini sur [Google AI Studio](https://aistudio.google.com/apikey) et mets `PROVIDER=gemini`.
 
 Pas de clé ? Tout marche quand même en mode démo (réponses pré-enregistrées) : ajoute `--mock` à la fin de la commande.
 
@@ -54,7 +54,7 @@ Avant d'exécuter du code, l'agent te montre ce qu'il veut lancer et attend ton 
 ## Les fichiers
 
 ```
-llm.py       connexion au LLM (Gemini, Groq, Ollama, OpenAI) + mode démo
+llm.py       connexion au LLM (Claude, Gemini, Groq, Ollama, OpenAI) + mode démo
 outils.py    les fonctions que les agents peuvent appeler
 data/        les fichiers d'entrée (notes, cours)
 sortie/      ce que l'agent produit
@@ -64,7 +64,8 @@ sortie/      ce que l'agent produit
 
 Le code utilise le format de l'API OpenAI, que la plupart des fournisseurs acceptent. Pour changer, modifie seulement `.env` :
 
-- `PROVIDER=gemini` : gratuit avec une clé AI Studio (par défaut)
+- `PROVIDER=claude` : Claude d'Anthropic, le modèle de la démo (clé payante)
+- `PROVIDER=gemini` : gratuit avec une clé AI Studio (utilisé si `PROVIDER` est absent)
 - `PROVIDER=ollama` : un modèle qui tourne sur ton PC, sans internet ni clé ([ollama.com](https://ollama.com))
 - `PROVIDER=groq` ou `PROVIDER=openai` : avec leur clé et `MODEL=...`
 
