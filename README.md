@@ -13,7 +13,7 @@ Agent = LLM + outils + une boucle
 Il te faut Python 3.10 ou plus.
 
 ```bash
-git clone <lien-du-repo>
+git clone https://github.com/AymaneAsserrar/agents-ia-ensa.git
 cd agents-ia-ensa
 pip install -r requirements.txt
 cp .env.example .env
