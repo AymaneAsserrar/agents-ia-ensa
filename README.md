@@ -2,6 +2,8 @@
 
 Code de la session IEEE ENSA Fès du 14 novembre 2026, par Aymane Asserrar ([@aymane.ai_](https://instagram.com/aymane.ai_) sur Instagram).
 
+Les slides de la session : [slides/De_ChatGPT_aux_agents_IA.pdf](slides/De_ChatGPT_aux_agents_IA.pdf).
+
 On construit un agent IA à partir de zéro, en 5 petits scripts Python, sans framework. L'idée : comprendre ce qui se passe vraiment derrière ChatGPT, Claude ou Gemini quand ils "utilisent des outils".
 
 ```
